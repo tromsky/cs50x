@@ -1,8 +1,9 @@
+use std::fmt::Write;
 use std::io;
-use std::io::Write;
+use std::io::Write as OtherWrite;
 
 fn main() {
-    let mut height: u32 = 0;
+    let mut height: usize = 0;
 
     while height < 1 || height > 8 {
         height = get_height();
@@ -11,7 +12,7 @@ fn main() {
     print_tower(height);
 }
 
-fn get_height() -> u32 {
+fn get_height() -> usize {
     loop {
         print!("Enter height: ");
         // needed for print!, to clear buffer
@@ -23,7 +24,7 @@ fn get_height() -> u32 {
             .read_line(&mut height)
             .expect("Failed to read line");
 
-        let height: u32 = match height.trim().parse() {
+        let height: usize = match height.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
@@ -32,36 +33,18 @@ fn get_height() -> u32 {
     }
 }
 
-fn print_tower(height: u32) {
-    // for each row
-    let mut i = 1;
-    while i <= height {
-        // print spaces
-        let mut j = 0;
-        while j < height - i {
-            print!(" ");
-            j += 1;
-        }
+fn print_tower(total_height: usize) {
+    let mut output = String::new();
 
-        // print left hashes
-        let mut k = 1;
-        while k <= i {
-            print!("#");
-            k += 1;
-        }
-
-        // print the gap
-        print!("  ");
-
-        // print the right hashes
-        let mut l = 1;
-        while l <= i {
-            print!("#");
-            l += 1;
-        }
-
-        // print new line and end the row
-        println!("");
-        i += 1;
+    for height in 1..=total_height {
+        writeln!(
+            &mut output,
+            "{padding} {blocks}  {blocks}",
+            padding = " ".repeat(total_height - height),
+            blocks = "#".repeat(height),
+        )
+        .unwrap();
     }
+
+    print!("{output}");
 }
