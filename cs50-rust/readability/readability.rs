@@ -17,7 +17,7 @@ fn main() {
             letter_count += 1;
         } else if character == ' ' {
             word_count += 1;
-        } else if character == '.' || character == '!' || character == '!' {
+        } else if character == '.' || character == '?' || character == '!' {
             sentence_count += 1;
         }
     }
