@@ -1,7 +1,7 @@
 use std::io;
 
 fn main() {
-    println!("-- Radability --");
+    println!("-- Readability --");
 
     // Prompt the user for some text
     println!("Enter text and press return.");
