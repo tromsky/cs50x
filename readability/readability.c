@@ -39,9 +39,9 @@ int main(void)
     // S is the average number of sentences per 100 words in the text
     //     the number of sentences divided by the number of words, all multiplied by 100
 
-    float average_letters = (float)letter_count / (float)word_count * 100.00;
-    float average_sentences = (float)sentence_count / (float)word_count * 100.00;
-    float index = 0.0588 * average_letters - 0.296 * average_sentences - 15.8;
+    float average_letters = (float)letter_count / (float)word_count * 100.00f;
+    float average_sentences = (float)sentence_count / (float)word_count * 100.00f;
+    float index = 0.0588f * average_letters - 0.296f * average_sentences - 15.8f;
 
     // Print the grade level
     int grade = round(index);
