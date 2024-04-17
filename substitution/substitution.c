@@ -72,4 +72,5 @@ int main(int argc, string argv[])
     ciphertext[strlen(plaintext)] = '\0';
 
     printf("ciphertext: %s\n", ciphertext);
+    return 0;
 }
