@@ -6,11 +6,11 @@ use std::process;
 fn has_no_duplicates(key: &str) -> bool {
     let mut seen = HashSet::new();
     for character in key.chars() {
-        // convert the character to lowercase
+        // convert character to lowercase
         let lowercase_c = character.to_lowercase().next().unwrap();
         // check if the character is already in the HashSet
         if seen.contains(&lowercase_c) {
-            // Duplicate character found
+            // duplicate character found
             return false;
         }
         // if not, add it to the HashSet
@@ -78,12 +78,11 @@ fn main() {
 
             // append the substituion from the key
             // depending on upper or lowercase
+            let substituion: char = key.chars().nth(delta).unwrap();
             if character.is_uppercase() {
-                let substitution: char = key.chars().nth(delta).unwrap().to_ascii_uppercase();
-                ciphertext.push(substitution);
+                ciphertext.push(substituion.to_ascii_uppercase());
             } else {
-                let substitution: char = key.chars().nth(delta).unwrap().to_ascii_lowercase();
-                ciphertext.push(substitution);
+                ciphertext.push(substitution.to_ascii_lowercase());
             }
         // if character is not A-z, just append it
         } else {
